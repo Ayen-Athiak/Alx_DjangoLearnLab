@@ -7,7 +7,7 @@ from .models import Book,Librarian,Library,Author
 # Create your views here.
 def list_books(request):
     books = Book.objects.all()
-    content = {list_books : books}
+    content = {'books' : books}
     return render(request, 'list_books.html', content)
 
 
