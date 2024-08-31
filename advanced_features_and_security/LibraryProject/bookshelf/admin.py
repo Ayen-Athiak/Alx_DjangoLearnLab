@@ -7,7 +7,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from.models import customUser
+from.models import CustomUser
 from django.contrib.auth.admin import UserAdmin
 
 # Register your models here.
@@ -23,7 +23,7 @@ class customer_admin(UserAdmin):
 
     
 
-admin.site.register(customUser,customer_admin)
+admin.site.register(CustomUser,customer_admin)
 
 
 
