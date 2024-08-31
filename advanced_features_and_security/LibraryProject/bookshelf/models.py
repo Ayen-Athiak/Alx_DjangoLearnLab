@@ -34,7 +34,7 @@ class usermanager(BaseUserManager):
 
 
 
-class CustomUser (AbstractUser):
+class customUser (AbstractUser):
     email = models.EmailField(unique=True)
     date_of_birth = models.DateField(null=True,unique=True, blank=True)
     profile_photo = models.ImageField(upload_to='profile_photos/', null=True, blank=True)
