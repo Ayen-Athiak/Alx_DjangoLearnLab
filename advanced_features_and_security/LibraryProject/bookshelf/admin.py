@@ -16,14 +16,10 @@ from django.contrib.auth.admin import UserAdmin
 class CustomUserAdmin(UserAdmin):
     list_display = ('username','email','first_name','last_name','is_staff','is_active')
     search_fields =("email","username","last_name")
-    list_filter = ("is_staff","is_active")
-    fieldsets = ()
-    add_fieldsets = ()
-    filter_horizontal = ()
+  
+ 
 
-    
-
-admin.site.register(CustomUser,CustomUserAdmin)
+admin.site.register( CustomUser, CustomUserAdmin)
 
 
 
