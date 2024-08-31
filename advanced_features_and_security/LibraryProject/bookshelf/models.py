@@ -6,7 +6,7 @@ from django.db import models
 # Create your models here.
 
 
-class usermanager(BaseUserManager):
+class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None):
         if not email:
             raise ValueError('Users must have an email address')
@@ -32,7 +32,7 @@ class CustomUser(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
-    objects = usermanager()
+    objects = CustomUserManager()
 
     def __str__(self):
         return self.email
