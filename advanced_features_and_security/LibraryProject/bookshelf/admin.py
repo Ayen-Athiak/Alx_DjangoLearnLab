@@ -13,7 +13,7 @@ from django.contrib.auth.admin import UserAdmin
 # Register your models here.
 # first is the user custom model
 
-class customer_admin(UserAdmin):
+class CustomUserAdmin(UserAdmin):
     list_display = ('username','email','first_name','last_name','is_staff','is_active')
     search_fields =("email","username","last_name")
     list_filter = ("is_staff","is_active")
@@ -23,7 +23,7 @@ class customer_admin(UserAdmin):
 
     
 
-admin.site.register(CustomUser,customer_admin)
+admin.site.register(CustomUser,CustomUserAdmin)
 
 
 
