@@ -1,7 +1,8 @@
 from django.shortcuts import render
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Library,Book
 
-from django.views.generic import DetailView
 
 def list_books(request):
     books = Book.objects.all()
