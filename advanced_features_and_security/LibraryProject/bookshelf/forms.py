@@ -1,7 +1,7 @@
 from django import forms
 from .models import Book
 
-class BookForm(forms.ModelForm):
+class ExampleForm(forms.ModelForm):
     title = forms.CharField(max_length=100, help_text='Enter the book title.')
     author = forms.CharField(max_length=100, help_text='Enter the book author.')
     publication_date = forms.DateField(widget=forms.SelectDateWidget(years=range(1900, 2025)), help_text='Enter the publication date.')
