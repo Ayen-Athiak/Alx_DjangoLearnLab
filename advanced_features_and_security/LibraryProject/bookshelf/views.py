@@ -67,5 +67,17 @@ def login_view(request):
 
 
 
+from django.shortcuts import render, redirect
+from .forms import BookForm
+
+def create_book(request):
+    if request.method == 'POST':
+        form = BookForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('book_list')  # Redirect to the book list view after saving
+    else:
+        form = BookForm()
+    return render(request, 'create_book.html', {'form': form})
 
 
