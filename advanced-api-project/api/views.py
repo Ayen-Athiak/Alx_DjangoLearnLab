@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .Serializer import BookSerializer,AuthorSerializer
+from .serializers import BookSerializer,AuthorSerializer
 from rest_framework.permissions import AllowAny,IsAdminUser,IsAuthenticatedOrReadOnly,DjangoModelPermissionsOrAnonReadOnly
 from .models import Book,Author
 from rest_framework.generics import (
