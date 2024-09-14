@@ -48,7 +48,7 @@ class AuthorSerializer(serializers.ModelSerializer):
 
 
 
-    relation = BookSerializer(many = True)   
+    relation = BookSerializer(many = True read_only =True)   
    
    
     class Meta:
