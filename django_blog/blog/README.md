@@ -62,3 +62,54 @@ Password Handling: Passwords are securely hashed using Django’s built-in authe
  CRUD functionality.
 Instructions for authenticated users.
 Notes on permissions and access control.
+
+
+
+
+
+#question 3
+
+Overview
+The comment system allows users to interact with blog posts by adding their thoughts and feedback. Authenticated users can create, edit, and delete their comments, while all users can view comments associated with a post.
+
+Features
+View Comments: All users can view comments under each blog post.
+Add Comments: Authenticated users can post new comments.
+Edit Comments: Authenticated users can edit their own comments.
+Delete Comments: Authenticated users can delete their own comments.
+User Permissions
+Viewing Comments: Available to all users (authenticated and unauthenticated).
+Adding Comments: Only authenticated users can add comments.
+Editing Comments: Only the author of the comment can edit their own comments.
+Deleting Comments: Only the author of the comment can delete their own comments.
+How to Add a Comment
+Navigate to a Blog Post: Go to the blog post where you wish to comment.
+
+Scroll to the Comments Section: Find the comments section below the blog content.
+
+Fill Out the Comment Form:
+
+Enter your comment in the text field provided.
+Submit the Comment: Click the "Submit" button to add your comment.
+
+
+How to Edit a Comment
+Go to the Blog Post: Navigate to the post containing the comment you wish to edit.
+
+Find Your Comment: Locate your comment in the comments section.
+
+Click on the Edit Link: Click the "Edit" link next to your comment.
+
+Modify Your Comment: Update the content in the comment form.
+
+Save Changes: Click the "Save Changes" button to update your comment.
+
+
+How to Delete a Comment
+Navigate to the Blog Post: Go to the blog post with the comment you want to delete.
+
+Locate Your Comment: Find your comment in the comments section.
+
+Click on the Delete Link: Click the "Delete" link next to your comment.
+
+Confirm Deletion: The comment will be removed immediately upon clicking the delete link.
