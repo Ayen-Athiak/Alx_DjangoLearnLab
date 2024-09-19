@@ -3,6 +3,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Post,Comment
+from taggit.forms import TagField 
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -13,12 +14,13 @@ class CustomUserCreationForm(UserCreationForm):
         fields = ('username', 'email', 'password1', 'password2')
 
 
+#number 4
 from django import forms
 from .models import Post
-from taggit.forms import TagField  # Import TagField from django-taggit
+from taggit.forms import TagField, TagWidget  # Import TagField and TagWidget
 
 class PostForm(forms.ModelForm):
-    tags = TagField()  # Use TagField to create the tags field
+    tags = TagField(widget=TagWidget(attrs={'placeholder': 'Add tags (comma-separated)'}))  # Use TagWidget
 
     class Meta:
         model = Post
@@ -26,7 +28,6 @@ class PostForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(PostForm, self).__init__(*args, **kwargs)
-        self.fields['tags'].widget.attrs.update({'placeholder': 'Add tags (comma-separated)'})
 
 
 
