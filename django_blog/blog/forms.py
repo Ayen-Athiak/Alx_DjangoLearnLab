@@ -13,14 +13,25 @@ class CustomUserCreationForm(UserCreationForm):
         fields = ('username', 'email', 'password1', 'password2')
 
 
-
-
-
+from django import forms
+from .models import Post
+from taggit.forms import TagField  # Import TagField from django-taggit
 
 class PostForm(forms.ModelForm):
+    tags = TagField()  # Use TagField to create the tags field
+
     class Meta:
         model = Post
-        fields = ['title', 'content']
+        fields = ['title', 'content', 'tags']  # Include 'tags' in the fields
+
+    def __init__(self, *args, **kwargs):
+        super(PostForm, self).__init__(*args, **kwargs)
+        self.fields['tags'].widget.attrs.update({'placeholder': 'Add tags (comma-separated)'})
+
+
+
+
+
 
 
 # number 3
