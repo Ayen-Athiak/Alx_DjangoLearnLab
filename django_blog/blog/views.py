@@ -8,6 +8,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Post, Comment
 from .forms import CommentForm
+from django.db.models import Q
+from django.shortcuts import render
+
 
 def register(request):
     if request.method == 'POST':
@@ -161,3 +164,20 @@ def CommentDeleteView(request, comment_id):
     return redirect('post_comments', post_id=comment.post.id)
 
     
+
+
+#question 4
+
+
+def search_view(request):
+    query = request.GET.get('q')
+    if query:
+        results = Post.objects.filter(
+            Q(title__icontains=query) | 
+            Q(content__icontains=query) | 
+            Q(tags__name__icontains=query)
+        ).distinct()
+    else:
+        results = Post.objects.none()
+
+    return render(request, 'search_results.html', {'results': results})

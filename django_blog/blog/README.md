@@ -113,3 +113,16 @@ Locate Your Comment: Find your comment in the comments section.
 Click on the Delete Link: Click the "Delete" link next to your comment.
 
 Confirm Deletion: The comment will be removed immediately upon clicking the delete link.
+
+
+
+
+# Tagging and Search Features Documentation
+
+## Tagging Posts
+- To tag a post, simply enter the tags in the designated field during post creation or editing. 
+- If a tag does not exist, it will be created automatically.
+
+## Searching for Posts
+- Use the search bar to enter keywords related to post titles, content, or tags. 
+- Click on a tag to view all posts associated with it.
