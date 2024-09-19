@@ -1,7 +1,7 @@
 # blog/urls.py
 from django.urls import path
 from .views import register, user_login, user_logout, profile
-from .views import PostCreateView,PostDeleteView,PostDetailView,PostUpdateView,PostListView,CommentCreateView,edit_comment,CommentDeleteView,CommentUpdateView,search_view,
+from .views import PostCreateView,PostDeleteView,PostDetailView,PostUpdateView,PostListView,CommentCreateView,edit_comment,CommentDeleteView,CommentUpdateView,search_view
 
 
 urlpatterns = [
@@ -22,6 +22,6 @@ urlpatterns = [
     path('comment/<int:pk>/delete/', CommentDeleteView, name='delete_comment'),
 
     path('search/', search_view, name='search'),
-    path('tags/<str:tag_name>/', tagged_posts, name='tagged_posts'),
+   
 ]
 
