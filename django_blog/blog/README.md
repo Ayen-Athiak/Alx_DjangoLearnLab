@@ -56,3 +56,9 @@ Confirm that the changes are saved and a success message is shown.
 Security Considerations
 CSRF Protection: All forms include CSRF tokens to protect against cross-site request forgery attacks.
 Password Handling: Passwords are securely hashed using Django’s built-in authentication system.
+
+
+#question number 2
+ CRUD functionality.
+Instructions for authenticated users.
+Notes on permissions and access control.
