@@ -1,49 +1,37 @@
-# blog/forms.py
-from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django import forms
 from django.contrib.auth.models import User
-from .models import Post,Comment
-from taggit.forms import TagField 
-
+from .models import UserProfile, Post, Comment
+from taggit.forms import TagWidget
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2')
+        fields = ['username', 'email', 'password1', 'password2']
 
 
-#number 4
-# blog/forms.py
-from django import forms
-from .models import Post
-from taggit.forms import TagField, TagWidget  # Importing TagField and TagWidget
-from taggit.managers import TaggableManager
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['bio', 'profile_picture']
 
-class PostForm(forms.ModelForm):
-    tags = TagField(widget=TagWidget(attrs={'placeholder': 'Add tags (comma-separated)'}))  # Use TagWidget
 
+class CreatePostForm(forms.ModelForm):
+    title = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'placeholder': 'Enter the title'}))
+    content = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Enter the content'}))
+    
     class Meta:
         model = Post
-        fields = ['title', 'content', 'tags']  # Include 'tags' in the fields
+        fields = ['title', 'content', 'tags'] 
+        widgets = {
+            'tags': TagWidget(),  
+        }
 
+class CreateCommentForm(forms.ModelForm):
+    content = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Enter your comment here'}))
 
-
-
-
-
-
-# number 3
-
-class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ['content']
-
-    def clean_content(self):
-        content = self.cleaned_data.get('content')
-        if not content:
-            raise forms.ValidationError("Content cannot be empty.")
-        return content
-
+        fields = ['content'] 

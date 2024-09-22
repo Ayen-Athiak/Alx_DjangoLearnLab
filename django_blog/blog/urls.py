@@ -1,27 +1,31 @@
-# blog/urls.py
 from django.urls import path
-from .views import register, user_login, user_logout, profile
-from .views import PostCreateView,PostDeleteView,PostDetailView,PostUpdateView,PostListView,CommentCreateView,edit_comment,CommentDeleteView,CommentUpdateView,search_view
-
+from django.contrib.auth import views as auth_views
+from . import views
 
 urlpatterns = [
-    path('register/', register, name='register'),
-    path('login/', user_login, name='login'),
-    path('logout/', user_logout, name='logout'),
-    path('profile/', profile, name='profile'),
+    path('posts/', views.PostListView.as_view(), name='posts'),
+    path('', views.HomeView.as_view(), name='home'),
+    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='registration/logout.html'), name='logout'),
+    path('register/', views.register, name='register'),
+    path('profile/', views.profile, name='profile'),
+    path('post/new/', views.PostCreateView.as_view(), name='post_form'),
+    path('post/<int:pk>/update/', views.PostUpdateView.as_view(), name='post_editForm'),
+    path('post/<int:pk>/delete/', views.PostDeleteView.as_view(), name='post_delete'),
+    path('post/<int:pk>/', views.PostDetailView.as_view(), name='post_detail'),
 
-     path('post/', PostListView.as_view(), name='post-list'),
-    path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
-    path('post/new/', PostCreateView.as_view(), name='post-create'),
-    path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),
-    path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
+    ###########################################
+    ### Patterns for comments ########
+    ###########################################
 
-    path('comment/<int:pk>/update/', CommentUpdateView, name='post_comments'),
-    path('post/<int:pk>/comments/new/', CommentCreateView, name='add_comment'),
-    path('comments/edit/<int:comment_id>/', edit_comment, name='edit_comment'),
-    path('comment/<int:pk>/delete/', CommentDeleteView, name='delete_comment'),
+    path('posts/<int:post_id>/comments/', views.CommentListView.as_view(), name='comment_list'),
+    # UPDATED: Changed 'post_id' to 'pk'
+    path('post/<int:pk>/comments/new/', views.CommentCreateView.as_view(), name='comment_create'),
+    path('comment/<int:pk>/', views.CommentDetailView.as_view(), name='comment_detail'),
+    path('comment/<int:pk>/update/', views.CommentUpdateView.as_view(), name='comment_update'),
+    path('comment/<int:pk>/delete/', views.CommentDeleteView.as_view(), name='comment_delete'),
 
-    path('search/', search_view, name='search'),
-   
+    ####### Search urls#####
+    path('search/', views.search_view, name='search'),
+    path('tags/<slug:tag_slug>/', views.PostByTagListView.as_view(), name='posts_by_tag'),
 ]
-
